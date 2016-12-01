@@ -1,0 +1,11 @@
+[
+  {
+    "host": "helloapi",
+    "port": "3000",
+    "protocol": "http",
+    "rootPath": "api/v1",
+    "middleware": [
+      "SayHello"
+    ]
+  }
+]

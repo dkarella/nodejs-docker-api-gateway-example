@@ -1,0 +1,11 @@
+# Local Deployment
+version: "2"
+services:
+  gateway:
+    image: gateway
+    ports:
+      - "3000:3000"
+  helloapi:
+    image: helloapi
+    ports:
+      - "3000"
