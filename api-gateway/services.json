@@ -1,5 +1,6 @@
 [
   {
+    "name": "helloapi",
     "host": "helloapi",
     "port": "3000",
     "protocol": "http",

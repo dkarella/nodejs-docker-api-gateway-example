@@ -23,6 +23,7 @@ app.get('/', function(req, res) {
 
 // Bootstrap services
 for(let i = 0; i < services.length; i++) {
+  const name = services[i].name;
   const host = services[i].host;
   const port = services[i].port;
   const rootPath = services[i].rootPath || "";
