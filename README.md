@@ -14,7 +14,7 @@ Example of a lightweight and extensible NodeJS based API gateway implementation 
     - Note: If you want to access the hello-world-api directly:
         - ```docker ps```
         - Take note of the port that the hello-world-api is running on, i.e. in ```0.0.0.0:32771->3000/tcp``` it would be 32771
-        - Go to [localhost:<hello-world-api-port>/api/v1/hello](http://localhost:<hello-world-api-port>/api/v1/hello)
+        - Go to [localhost:port/api/v1/hello](http://localhost:<hello-world-api-port>/api/v1/hello)
 
 # Deploying in Swarm Mode
 Deploying in Docker Swarm Mode will vary based on your setup however you can follow the general guidelines below assuming you have a swarm set up and your docker engine is pointing to that swarm:
