@@ -2,10 +2,10 @@
 version: "2"
 services:
   gateway:
-    image: gateway
+    build: ./api-gateway/
     ports:
       - "3000:3000"
   helloapi:
-    image: helloapi
+    build: ./hello-world-api/
     ports:
       - "3000"
