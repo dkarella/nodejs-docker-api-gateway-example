@@ -74,13 +74,13 @@ The API Gateway is comprised mainly by the following 3 files:
 - services.json
     - This file is where you define your services and what middleware they should use
 
-##### The Bootstrapping Process (app.js)
+#### The Bootstrapping Process (app.js)
 As mentioned above, the purpose of app.js is to set up the server to proxy requests. It does this by reading in the contents of services.json which should contain an array of services (as described below) and then configuring a REST endpoint at "/api/{service name}"
 
 For example: The name of our Hello World API is "helloapi", thus when going through the API Gateway we will access the Hello World API through the endpoint "/api/helloapi"
 
 
-##### Configuring Your Services (services.json)
+#### Configuring Your Services (services.json)
 This is where you define your services. It should contain a JSON array of objects each corresponding to an individual service. This object should contain the following parameters:
 - name
     - The name of your service. This is used to set up the endpoint on the API Gateway that will redirect requests to the actual service.
@@ -98,7 +98,7 @@ This is where you define your services. It should contain a JSON array of object
     - An array of strings corresponding to the name of a javascript file inside the "middleware/" directory. This is how you specify what middleware a service should use.
     - Note: middleware will be applied in the order that it appears in the array
 
-##### Middleware (middleware/*.js)
+#### Middleware (middleware/*.js)
 The "middleware/" directory is used to hold your custom Express middleware to apply onto the requests before they are proxied. For example, let's take a look at the example middleware "middleware/SayHello.js":
 ```javascript
 module.exports = function(req, res, next) {
@@ -124,9 +124,9 @@ When running on a Docker swarm, where you can have multiple instances of the sam
 ### Summary
 This implementation of an API Gateway is meant to illustrate how you can easily build a flexible yet powerful API Gateway using NodeJS/Express and Docker. In short, this implementation uses Express middleware and the NPM module [http-proxy](https://www.npmjs.com/package/http-proxy) to create a reverse proxy in which you can add functionality to modify and react to requests before they are sent to their intended destination.
 
-##### Disclaimer
+#### Disclaimer
 I would not recommend using this exact implementation in a critical production enviroment since it has not yet been thoroughly tested in such an environment, however you are free to use and modify the code as you wish.
 
-##### Final Thoughts / Future Development
+#### Final Thoughts / Future Development
 - It may be worthwile to use something like [Apache Zookeeper](https://zookeeper.apache.org/) to configure the services instead of the "services.json" file.
-- Other types of protocols aside from "http" and "https" still need to be tested. I am especially interested in seeing if I am able to proxy requests to a websocket server or other two-way communication servers.
+- Other types of protocols aside from "http" and "https" still need to be tested. I am especially interested in seeing if I am able to proxy a request to connect to a websocket server or other two-way communication servers and maintain that connection between the client/server.
