@@ -40,7 +40,7 @@ for(let i = 0; i < services.length; i++) {
   middleware.push(restreamer());
 
   app.use(`/api/${name}*`, middleware, (req, res, next) => {
-    const newPath = url.parse(req.originalUrl).pathname.replace(`/api/${host}`, rootPath);
+    const newPath = url.parse(req.originalUrl).pathname.replace(`/api/${name}`, rootPath);
     console.log(`Forwarding request to: ${newPath}`);
     proxy.web(req, res, { target: `${protocol}://${host}:${port}/${newPath}` }, next);
   });
